@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.rose.tutorialmod.TutorialMod;
+import net.rose.tutorialmod.block.ModBlocks;
 import net.rose.tutorialmod.item.ModItems;
 
 import java.util.function.Supplier;
@@ -28,9 +29,13 @@ public class ModCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> AZURITE_BLOCKS_TAB = CREATIVE_MODE_TABS.register("azurite_blocks_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.RAW_AZURITE.get()))
+                    .icon(() -> new ItemStack(ModBlocks.AZURITE_BLOCK.get()))
                     .title(Component.translatable("creativetab.tutorialmod.azurite_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModBlocks.AZURITE_BLOCK);
+                        output.accept(ModBlocks.RAW_AZURITE_BLOCK);
+                        output.accept(ModBlocks.AZURITE_ORE);
+                        output.accept(ModBlocks.AZURITE_DEEPSLATE_ORE);
 
                     })
                     .build());
