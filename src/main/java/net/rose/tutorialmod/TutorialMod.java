@@ -1,5 +1,6 @@
 package net.rose.tutorialmod;
 
+import net.rose.tutorialmod.creativemodtab.ModCreativeModeTabs;
 import net.rose.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
 
@@ -33,6 +34,7 @@ public class TutorialMod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
 
 
