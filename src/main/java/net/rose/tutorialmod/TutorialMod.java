@@ -1,5 +1,6 @@
 package net.rose.tutorialmod;
 
+import net.rose.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -32,6 +33,8 @@ public class TutorialMod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModItems.register(modEventBus);
+
 
         NeoForge.EVENT_BUS.register(this);
         // Register the item to a creative tab
@@ -45,6 +48,10 @@ public class TutorialMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.AZURITE);
+            event.accept(ModItems.RAW_AZURITE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
